@@ -6,7 +6,7 @@ function load(code: string, request: string): string {
   return loader.call(
     {
       resourcePath: path,
-      resourceQuery: '?' + query
+      resourceQuery: query ? '?' + query : ''
     },
     code
   )
@@ -32,6 +32,12 @@ describe('vue-media-loader', () => {
       code,
       './Test.vue?media=' + encodeURIComponent('(max-width: 480px)')
     )
+    expect(res).toBe(code)
+  })
+
+  it('not throws when query is not passed', () => {
+    const code = '.foo { color: red; }'
+    const res = load(code, './Test.vue')
     expect(res).toBe(code)
   })
 })

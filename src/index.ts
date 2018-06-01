@@ -2,6 +2,8 @@ import * as loaderUtils from 'loader-utils'
 import { loader } from 'webpack'
 
 const vueMediaLoader: loader.Loader = function vueMediaLoader(code) {
+  if (!this.resourceQuery) return code
+
   const options = loaderUtils.parseQuery(this.resourceQuery)
 
   // Ignore it if it does not come from Vue SFC or not have `media` attribute.
