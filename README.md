@@ -17,6 +17,8 @@ $ npm i -D vue-media-loader
 Add `vue-loader` and `vue-media-loader` in your webpack config. Note that you need to insert `vue-media-loader` between any CSS preprocessors and `css-loader`.
 
 ```js
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
   // ... Other configs goes here ...
 
@@ -36,7 +38,9 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+
+  plugins: [new VueLoaderPlugin()]
 }
 ```
 
