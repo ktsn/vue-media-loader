@@ -35,6 +35,15 @@ describe('vue-media-loader', () => {
     expect(res).toBe(code)
   })
 
+  it('extracts charset at-rule', () => {
+    const code = '@charset "UTF-8";\n.foo { color: red; }'
+    const media = 'print'
+    const res = load(code, './Test.vue?vue&media=' + encodeURIComponent(media))
+    expect(res).toBe(
+      `@charset "UTF-8";\n@media ${media} {\n.foo { color: red; }\n}`
+    )
+  })
+
   it('not throws when query is not passed', () => {
     const code = '.foo { color: red; }'
     const res = load(code, './Test.vue')

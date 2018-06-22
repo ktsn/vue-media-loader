@@ -11,6 +11,11 @@ const vueMediaLoader: loader.Loader = function vueMediaLoader(code) {
     return code
   }
 
-  return `@media ${options.media} {\n${code}\n}`
+  const str = String(code)
+  const matched = str.match(/^\s*@charset\s*('.*'|".*")\s*;\s*/)
+  const charset = matched ? matched[0] : ''
+  const body = str.replace(charset, '')
+
+  return `${charset}@media ${options.media} {\n${body}\n}`
 }
 export = vueMediaLoader
