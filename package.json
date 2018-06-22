@@ -1,6 +1,6 @@
 {
   "name": "vue-media-loader",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "katashin",
   "description": "Enable `media` attribute on Vue SFC styles",
   "keywords": [
