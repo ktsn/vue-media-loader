@@ -6,7 +6,7 @@ function load(code: string, request: string): string {
   return loader.call(
     {
       resourcePath: path,
-      resourceQuery: query ? '?' + query : ''
+      resourceQuery: query ? '?' + query : '',
     },
     code
   )
